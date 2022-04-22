@@ -58,3 +58,5 @@ print(array2[3])
 # 원소를 삭제하는 데에 드는 시간 복잡도는 O(n)이다.
 del array2[0]
 ```
+
+[Velog] <https://velog.io/@ms269/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EB%B0%B0%EC%97%B4Array>
