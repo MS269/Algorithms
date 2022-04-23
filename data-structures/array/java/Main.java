@@ -1,4 +1,4 @@
-class Main {
+public class Main {
     public static void main(String[] args) {
         int array1[] = new int[5]; // 크기가 5인 배열 선언
         int array2[] = { 1, 2, 3, 4, 5 }; // 배열 초기화
