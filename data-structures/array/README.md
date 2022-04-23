@@ -14,9 +14,9 @@
 ## C
 
 ```c
-int array1[5]; // 크기가 5인 배열 선언
-int array2[] = {1, 2, 3, 4, 5}; // 배열 초기화
-int *array3; // int array3[]과 비슷하다.
+int array1[5];                   // 크기가 5인 배열 선언
+int array2[] = {1, 2, 3, 4, 5};  // 배열 초기화
+int *array3;                     // int array3[]과 비슷하다.
 
 // 원소에 접근하는 데에 드는 시간 복잡도는 O(1)이다.
 printf("%d\n", array2[2]);
@@ -39,7 +39,7 @@ System.out.println(array2[2]);
 
 // 원소를 삭제하는 데에 드는 시간 복잡도는 O(n)이다.
 for (int i = 0; i < 4; i++) {
-  array2[i] = array2[i + 1];
+    array2[i] = array2[i + 1];
 }
 array2[4] = 0;
 ```
@@ -49,8 +49,8 @@ array2[4] = 0;
 Python에는 배열이 따로 없고, 리스트(List) 자료구조를 사용한다.
 
 ```py
-array1 = [0] * 5 # 크기가 5인 배열 선언
-array2 = [1, 2, 3, 4, 5] # 배열 초기화
+array1 = [0] * 5  # 크기가 5인 배열 선언
+array2 = [1, 2, 3, 4, 5]  # 배열 초기화
 
 # 원소에 접근하는 데에 드는 시간 복잡도는 O(1)이다.
 print(array2[3])
@@ -59,4 +59,4 @@ print(array2[3])
 del array2[0]
 ```
 
-[Velog] <https://velog.io/@ms269/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EB%B0%B0%EC%97%B4Array>
+[velog] <https://velog.io/@ms269/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EB%B0%B0%EC%97%B4Array>
