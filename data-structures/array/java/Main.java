@@ -7,20 +7,20 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             array1[i] = i + 1;
         }
-        // array1 = {1, 2, 3, 4, 5}
+        // array1 = { 1, 2, 3, 4, 5 }
 
         // 원소를 삽입하는 데에 드는 시간 복잡도는 O(n)이다.
         for (int i = 4; i > 0; i--) {
             array1[i] = array1[i - 1];
         }
         array1[0] = 10;
-        // array1 = {10, 1, 2, 3, 4}
+        // array1 = { 10, 1, 2, 3, 4 }
 
         // 원소를 삭제하는 데에 드는 시간 복잡도는 O(n)이다.
         for (int i = 0; i < 4; i++) {
             array1[i] = array1[i + 1];
         }
         array1[4] = 0;
-        // array1 = {1, 2, 3, 4, 0}
+        // array1 = { 1, 2, 3, 4, 0 }
     }
 }
