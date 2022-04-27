@@ -89,12 +89,12 @@ Java에서는 보통 ArrayList를 사용한다.
 ```java
 private static final int DEFAULT_CAPACITY = 1 << 4;
 
-private Integer[] dynamicArray;
+private int[] dynamicArray;
 private int size;
 private int capacity;
 
 public DynamicArray(final int capacity) {
-    this.dynamicArray = new Integer[capacity];
+    this.dynamicArray = new int[capacity];
     this.size = 0;
     this.capacity = capacity;
 }
