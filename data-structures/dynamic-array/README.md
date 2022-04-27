@@ -114,7 +114,7 @@ public void add(final int value) {
 }
 
 // 원소에 접근하는 데에 드는 시간 복잡도는 O(1)이다.
-public void set(final int index, int value) {
+public void set(final int index, final int value) {
     if (index >= this.size) {
         return;
     }
@@ -123,7 +123,7 @@ public void set(final int index, int value) {
 }
 
 // 임의의 인덱스에 원소를 삽입하는 데에 드는 시간 복잡도는 O(n)이다.
-public void insert(final int index, int value) {
+public void insert(final int index, final int value) {
     if (index >= this.size) {
         return;
     }
