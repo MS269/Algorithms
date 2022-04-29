@@ -9,7 +9,7 @@ struct Node {
 struct Node *head = NULL;
 
 // 맨 앞에 노드를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
-void insert_head(int value) {
+void insert_head(const int value) {
   struct Node *new = (struct Node *)malloc(sizeof(struct Node));
   new->data = value;
   new->next = NULL;

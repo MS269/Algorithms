@@ -1,33 +1,35 @@
 # 연결 리스트(Linked List)
 
-추상적 자료형인 리스트(list)를 구현한 자료구조로, 자료를 포인터(pointer)로 연결해 저장한다.
+추상적 자료형인 리스트(list)를 구현한 자료구조로, 데이터를 포인터(pointer)로 연결해 저장한다.
 
-자료를 저장할 때, 자료와 다음 자료의 메모리 주소를 함께 저장하며, 이 묶음을 노드(node)라고 부른다.
+데이터를 저장할 때, 데이터와 다음 데이터의 메모리 주소를 함께 저장하며, 이 묶음을 노드(node)라고 부른다.
 
-선형 자료구조이며, 임의 접근(random access)이 불가능하다.
+보통 트리(tree)를 구현하기 위해서 사용한다.
+
+## 특징
+
+- 선형 자료구조이다.
+  (= 자료가 앞뒤로 1:1로 선형이다.)
+- 임의 접근(random access)이 불가능하다.
+  - 임의의 노드에 접근하는 데에 드는 시간 복잡도가 O(n)이다.
 
 ## 장점
 
-- 배열(array)과는 다르게 길이를 자유롭게 늘리거나 줄일 수 있다.
-  그래서, 최대 길이를 알 수 없을 때에도 사용할 수 있다.
-
-- 자료의 삽입과 삭제를 배열에 비해 빠르게 한다.
-  예를 들어, 배열은 맨 앞에 자료의 삽입과 삭제에 시간 복잡도 O(n)이 드는 반면에, 연결 리스트는 O(1)이 든다.
-  하지만, 첫번째가 아닌 자료의 삽입과 삭제는 해당 자료를 검색하는 데에 시간이 들어 시간 복잡도 O(n)이 든다.
+- 맨 앞이나 뒤에 노드의 삽입과 삭제에 드는 시간 복잡도는 O(1)이다.
+- 크기(capacity)를 늘리거나 줄이는 것이 가능하다.
 
 ## 단점
 
-- 배열과는 다르게 첨자(index)가 없어 임의 접근이 불가능하여, 첫번째 노드부터 순차적으로 접근해야하는데, 이 때 드는 시간 복잡도는 O(n)이다.
+- 데이터를 검색하는 데에 드는 시간 복잡도는 O(n)이다.
+- 중간에 노드의 삽입과 삭제에 드는 시간 복잡도는 O(n)이다.
+  (삽입이나 삭제할 위치를 검색하는 데에 드는 시간이다.)
+- 다음 데이터의 메모리 주소도 함께 저장하기 때문에, 메모리를 더 많이 사용한다.
 
-- 다음 자료의 메모리 주소도 함께 저장하기 때문에, 메모리를 더 많이 사용한다.
+## 단순 연결 리스트(Singly Liked List)
 
-## C
+맨 앞에 노드의 삽입과 삭제에 드는 시간 복잡도가 O(1)이다.
 
-연결 리스트 중 단순 연결 리스트(singly linked list)를 구현했다.
-
-맨 앞에 원소 삽입과 삭제에 시간 복잡도가 O(1)이다.
-
-맨 뒤의 노드 포인터도(tail)도 사용한다면, 맨 앞에 원소 삽입과 맨 뒤의 원소 삭제에 시간 복잡도가 O(1)이라서, 큐(queue) 구현에 적합하다.
+### C
 
 ```c
 struct Node {
@@ -38,7 +40,7 @@ struct Node {
 struct Node *head = NULL;
 
 // 맨 앞에 노드를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
-void insert_head(int value) {
+void insert_head(const int value) {
   struct Node *new = (struct Node *)malloc(sizeof(struct Node));
   new->data = value;
   new->next = NULL;
@@ -72,37 +74,78 @@ void print() {
 }
 ```
 
-## Java
+### Java
 
-Java에서는 linkedList를 사용한다.
+Java에서는 LinkedList를 제공한다.
 
 ```java
-LinkedList<Integer> linkedList = new LinkedList<>();
+class Node {
 
-// 맨 뒤에 노드를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
-for (int i = 0; i < 5; i++) {
-    linkedList.add(i + 1);
+    int data;
+    Node next;
+
+    Node() {
+    }
+
+    Node(final int value) {
+        this(value, null);
+    }
+
+    Node(final int value, final Node next) {
+        this.data = value;
+        this.next = next;
+    }
+
 }
-// linkedList = [1, 2, 3, 4, 5]
 
-// 맨 앞에 노드를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
-linkedList.add(0, 10);
-// linkedList = [10, 1, 2, 3, 4, 5]
+public class LinkedList extends Node {
 
-// 맨 앞이나 맨 뒤의 노드를 삭제하는 데에 드는 시간 복잡도는 O(1)이다.
-linkedList.remove();
-// linkedList = [1, 2, 3, 4, 5]
+    private Node head;
 
-// 노드에 접근하는 데에 드는 시간 복잡도는 O(n)이다.
-System.out.println(linkedList.get(4));
-// 5
+    public LinkedList() {
+        head = null;
+    }
+
+    public LinkedList(final Node head) {
+        this.head = head;
+    }
+
+    // 맨 앞에 노드를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
+    public void insertHead(final int value) {
+        Node newNode = new Node(value);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+    }
+
+    // 맨 앞의 노드를 삭제하는 데에 드는 시간 복잡도는 O(1)이다.
+    public void deleteHead() {
+        if (head != null) {
+            this.head = this.head.next;
+        }
+    }
+
+    // 노드에 접근하는 데에 드는 시간 복잡도는 O(n)이다.
+    public void print() {
+        Node now = head;
+
+        while (now != null) {
+            System.out.print(now.data + " ");
+            now = now.next;
+        }
+        System.out.println();
+    }
+
+}
 ```
 
 ## Python
 
-연결 리스트 중 단순 연결 리스트(singly linked list)를 구현했다.
-
-```python
+```py
 class Node:
     def __init__(self, data):
         self.data = data
