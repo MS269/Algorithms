@@ -82,9 +82,7 @@ void delete (const int index) {
 
 ## Java
 
-Java에서는 보통 ArrayList를 사용한다.
-
-아래 코드는 Arrays 라이브러리를 이용해서 구현한 것이다.
+Java에서는 ArrayList를 제공한다.
 
 ```java
 private static final int DEFAULT_CAPACITY = 1 << 4;
@@ -168,11 +166,11 @@ private int newCapacity(final int capacity) {
 
 Python에서는 리스트(list) 자료구조를 사용한다.
 
-```python
+```py
 array1 = []  # 빈 리스트 선언
 array2 = [1, 2, 3, 4, 5]  # 리스트 초기화
 
-# 원소를 맨 뒤에 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
+# 맨 뒤에 원소를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
 for i in range(5):
     array1.append(0)
 # array1 = [0, 0, 0, 0, 0]
