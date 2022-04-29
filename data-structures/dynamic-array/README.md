@@ -85,80 +85,84 @@ void delete (const int index) {
 Java에서는 ArrayList를 제공한다.
 
 ```java
-private static final int DEFAULT_CAPACITY = 1 << 4;
+public class DynamicArray {
 
-private int[] dynamicArray;
-private int size;
-private int capacity;
+    private static final int DEFAULT_CAPACITY = 1 << 4;
 
-public DynamicArray(final int capacity) {
-    this.dynamicArray = new int[capacity];
-    this.size = 0;
-    this.capacity = capacity;
-}
+    private Integer[] dynamicArray;
+    private int size;
+    private int capacity;
 
-public DynamicArray() {
-    this(DEFAULT_CAPACITY);
-}
-
-// 맨 뒤에 원소를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
-public void add(final int value) {
-    if (this.size >= this.capacity) {
-        this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity << 1));
+    public DynamicArray(final int capacity) {
+        this.dynamicArray = new Integer[capacity];
+        this.size = 0;
+        this.capacity = capacity;
     }
 
-    this.dynamicArray[this.size] = value;
-    this.size++;
-}
-
-// 원소에 접근하는 데에 드는 시간 복잡도는 O(1)이다.
-public void set(final int index, final int value) {
-    if (index >= this.size) {
-        return;
+    public DynamicArray() {
+        this(DEFAULT_CAPACITY);
     }
 
-    this.dynamicArray[index] = value;
-}
+    // 맨 뒤에 원소를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
+    public void add(final int value) {
+        if (this.size >= this.capacity) {
+            this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity << 1));
+        }
 
-// 임의의 인덱스에 원소를 삽입하는 데에 드는 시간 복잡도는 O(n)이다.
-public void insert(final int index, final int value) {
-    if (index >= this.size) {
-        return;
+        this.dynamicArray[this.size] = value;
+        this.size++;
     }
 
-    if (this.size >= this.capacity) {
-        this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity << 1));
+    // 원소에 접근하는 데에 드는 시간 복잡도는 O(1)이다.
+    public void set(final int index, int value) {
+        if (index >= this.size) {
+            return;
+        }
+
+        this.dynamicArray[index] = value;
     }
 
-    for (int i = this.size; i > index; i--) {
-        this.dynamicArray[i] = dynamicArray[i - 1];
+    // 임의의 인덱스에 원소를 삽입하는 데에 드는 시간 복잡도는 O(n)이다.
+    public void insert(final int index, int value) {
+        if (index >= this.size) {
+            return;
+        }
+
+        if (this.size >= this.capacity) {
+            this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity << 1));
+        }
+
+        for (int i = this.size; i > index; i--) {
+            this.dynamicArray[i] = dynamicArray[i - 1];
+        }
+
+        dynamicArray[index] = value;
+        this.size++;
     }
 
-    dynamicArray[index] = value;
-    this.size++;
-}
+    // 임의의 인덱스의 원소를 삭제하는 데에 드는 시간 복잡도는 O(n)이다.
+    public void delete(final int index) {
+        if (index >= this.size) {
+            return;
+        }
 
-// 임의의 인덱스의 원소를 삭제하는 데에 드는 시간 복잡도는 O(n)이다.
-public void delete(final int index) {
-    if (index >= this.size) {
-        return;
+        for (int i = index; i < this.size; i++) {
+            this.dynamicArray[i] = this.dynamicArray[i + 1];
+        }
+
+        this.dynamicArray[this.size - 1] = 0;
+        this.size--;
+
+        if (this.capacity > DEFAULT_CAPACITY && this.size << 2 <= this.capacity) {
+            this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity >> 1));
+        }
     }
 
-    for (int i = index; i < this.size; i++) {
-        this.dynamicArray[i] = this.dynamicArray[i + 1];
+    private int newCapacity(final int capacity) {
+        this.capacity = capacity;
+        return capacity;
     }
 
-    this.dynamicArray[this.size - 1] = 0;
-    this.size--;
-
-    if (this.capacity > DEFAULT_CAPACITY && this.size << 2 <= this.capacity) {
-        this.dynamicArray = Arrays.copyOf(this.dynamicArray, newCapacity(this.capacity >> 1));
-    }
-}
-
-private int newCapacity(final int capacity) {
-    this.capacity = capacity;
-    return capacity;
 }
 ```
 

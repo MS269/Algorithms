@@ -104,4 +104,5 @@ public class DynamicArray {
         dynamicArray.delete(0);
         dynamicArray.print();
     }
+
 }
