@@ -93,14 +93,14 @@ public class DynamicArray {
     private int size;
     private int capacity;
 
+    public DynamicArray() {
+        this(DEFAULT_CAPACITY);
+    }
+
     public DynamicArray(final int capacity) {
         this.dynamicArray = new int[capacity];
         this.size = 0;
         this.capacity = capacity;
-    }
-
-    public DynamicArray() {
-        this(DEFAULT_CAPACITY);
     }
 
     // 맨 뒤에 원소를 삽입하는 데에 드는 시간 복잡도는 O(1)이다.
