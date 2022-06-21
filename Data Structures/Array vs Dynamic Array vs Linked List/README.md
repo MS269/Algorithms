@@ -14,4 +14,8 @@
 
 ## Dynamic Array(동적 배열)
 
+Array는 선언할 때 크기를 정해야한다.
+
+그에 반해 Dynamic Array는 크기를 정해주지 않아도 된다.
+
 ## Linked List(연결 리스트)
