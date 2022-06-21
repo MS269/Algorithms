@@ -7,24 +7,24 @@ int array[CAPACITY];
 int size = 0;
 
 // O(1)
-void update(int position, int value) {
-  assert(position >= 0 && position < CAPACITY && position < size);
-  array[position] = value;
+void update(int index, int value) {
+  assert(index >= 0 && index < CAPACITY && index < size);
+  array[index] = value;
 }
 
 // O(n)
-void insert(int position, int value) {
-  assert(position >= 0 && position < CAPACITY && position <= size++);
-  for (int i = size; i > position; i--) {
+void insert(int index, int value) {
+  assert(index >= 0 && index < CAPACITY && index <= size++);
+  for (int i = size; i > index; i--) {
     array[i] = array[i - 1];
   }
-  array[position] = value;
+  array[index] = value;
 }
 
 // O(n)
-void delete (int position) {
-  assert(position >= 0 && position < CAPACITY && position < size--);
-  for (int i = position; i < size; i++) {
+void delete (int index) {
+  assert(index >= 0 && index < CAPACITY && index < size--);
+  for (int i = index; i < size; i++) {
     array[i] = array[i + 1];
   }
   array[size] = 0;
@@ -39,19 +39,22 @@ void print() {
 
 int main() {
   for (int i = 0; i < 10; i++) {
-    insert(size, i + 1);
+    insert(0, i + 1);
+    print();
   }
-  print();
+  printf("\n");
 
   for (int i = 0; i < 10; i++) {
-    update(i, 10 - i);
+    update(i, i + 1);
+    print();
   }
-  print();
+  printf("\n");
 
   for (int i = 0; i < 10; i++) {
     delete (0);
+    print();
   }
-  print();
+  printf("\n");
 
   return 0;
 }
