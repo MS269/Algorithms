@@ -1,6 +1,6 @@
 # Stack & Queue
 
-## Stack
+## Stack(스택)
 
 LIFO(Last in First out, 후입선출)의 구조
 
@@ -10,7 +10,7 @@ LIFO(Last in First out, 후입선출)의 구조
 - 문자열 역순 출력
 - 연산자 후위 표기법
 
-## Queue
+## Queue(큐)
 
 FIFO(First in Frist out, 선입선출)의 구조
 
