@@ -1,4 +1,4 @@
-# Tree
+# Tree(트리)
 
 Node(노드)와 Edge(간선)로 이루어져있다.
 
@@ -50,7 +50,7 @@ DFT(Depth-First Traversal, 깊이 우선 순회) 세가지가 있다.
 - Perfect Binary Tree(포화 이진 트리): 모든 내부 노드가 2개의 자식 노드를 가지며, 모든 리프 노드가 동일한 높이를 갖는 이진 트리
 - Complete Binary Tree(완전 이진 트리): 왼쪽에서 오른쪽으로 순서대로 채워진 이진 트리
 
-## BST(Binary Search Tree)
+## BST(Binary Search Tree, 이진 탐색 트리)
 
 이진 탐색 트리 = 이진 탐색 + 연결 리스트
 
