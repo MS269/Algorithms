@@ -23,7 +23,7 @@ void inorder(int root) {
   }
 }
 
-// right - left - root
+// left - right - root
 void postorder(int root) {
   if (root > 0 && root < SIZE && tree[root] != 0) {
     postorder(root * 2);
