@@ -33,7 +33,7 @@ void inorder(node_t *root) {
   }
 }
 
-// right - left - root
+// left - right - root
 void postorder(node_t *root) {
   if (root != NULL) {
     postorder(root->left);
