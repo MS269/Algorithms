@@ -5,30 +5,30 @@
 #define DEFAULT_CAPACITY 1 << 3
 
 typedef struct dynamic_array {
-  int* data;
+  int *data;
   int size;
   int capacity;
 } dynamic_array_t;
 
-dynamic_array_t* init() {
-  dynamic_array_t* da = malloc(sizeof(dynamic_array_t));
-  da->data = malloc(DEFAULT_CAPACITY * sizeof(int*));
+dynamic_array_t *init() {
+  dynamic_array_t *da = malloc(sizeof(dynamic_array_t));
+  da->data = malloc(DEFAULT_CAPACITY * sizeof(int *));
   da->size = 0;
   da->capacity = DEFAULT_CAPACITY;
   return da;
 }
 
 // O(1)
-void update(dynamic_array_t* da, int index, int value) {
+void update(dynamic_array_t *da, int index, int value) {
   assert(index >= 0 && index < da->size);
   da->data[index] = value;
 }
 
 // O(n)
-void insert(dynamic_array_t* da, int index, int value) {
+void insert(dynamic_array_t *da, int index, int value) {
   assert(index >= 0 && index <= da->size++);
   if (da->size > da->capacity) {
-    da->data = realloc(da->data, (da->capacity <<= 1) * sizeof(int*));
+    da->data = realloc(da->data, (da->capacity <<= 1) * sizeof(int *));
   }
   for (int i = da->size; i > index; i--) {
     da->data[i] = da->data[i - 1];
@@ -37,7 +37,7 @@ void insert(dynamic_array_t* da, int index, int value) {
 }
 
 // O(n)
-void delete (dynamic_array_t* da, int index) {
+void delete (dynamic_array_t *da, int index) {
   assert(index >= 0 && index < da->size--);
   for (int i = index; i < da->size; i++) {
     da->data[i] = da->data[i + 1];
@@ -45,7 +45,7 @@ void delete (dynamic_array_t* da, int index) {
   da->data[da->size] = 0;
 }
 
-void print(dynamic_array_t* da) {
+void print(dynamic_array_t *da) {
   for (int i = 0; i < da->size; i++) {
     printf("%d ", da->data[i]);
   }
@@ -53,7 +53,7 @@ void print(dynamic_array_t* da) {
 }
 
 int main() {
-  dynamic_array_t* da = init();
+  dynamic_array_t *da = init();
 
   for (int i = 0; i < 10; i++) {
     insert(da, 0, i + 1);
