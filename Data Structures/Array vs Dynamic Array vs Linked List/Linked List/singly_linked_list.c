@@ -14,6 +14,7 @@ node_t *create_node(int data, node_t *next) {
   return new_node;
 }
 
+// O(n)
 int size(node_t *head) {
   if (head == NULL) {
     return 0;
