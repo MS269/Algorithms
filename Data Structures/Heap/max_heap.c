@@ -15,6 +15,7 @@ max_heap_t *create_heap(max_heap_t *heap) {
   return heap;
 }
 
+// O(logn)
 void up_heapify(max_heap_t *heap, int index) {
   int parent = (index - 1) / 2;
   if (parent < 0) {
@@ -28,6 +29,7 @@ void up_heapify(max_heap_t *heap, int index) {
   }
 }
 
+// O(logn)
 void down_heapify(max_heap_t *heap, int index) {
   if (index >= heap->count) {
     return;
@@ -57,18 +59,19 @@ void down_heapify(max_heap_t *heap, int index) {
   }
 }
 
+// O(logn)
 void push(max_heap_t *heap, int data) {
   if (heap->count >= heap->size) {
     return;
   }
   heap->data[heap->count++] = data;
   if (4 * heap->count >= 3 * heap->size) {
-    (heap->data) =
-        (int *)realloc((heap->data), (heap->size <<= 1) * sizeof(int));
+    heap->data = (int *)realloc(heap->data, (heap->size <<= 1) * sizeof(int));
   }
   up_heapify(heap, heap->count - 1);
 }
 
+// O(logn)
 void pop(max_heap_t *heap) {
   if (heap->count == 0) {
     return;
@@ -78,11 +81,11 @@ void pop(max_heap_t *heap) {
   heap->data[0] = temp;
   down_heapify(heap, 0);
   if (4 * heap->count <= heap->size) {
-    (heap->data) =
-        (int *)realloc((heap->data), (heap->size >>= 1) * sizeof(int));
+    heap->data = (int *)realloc(heap->data, (heap->size >>= 1) * sizeof(int));
   }
 }
 
+// O(1)
 int top(max_heap_t *heap) {
   if (heap->count != 0) {
     return heap->data[0];
