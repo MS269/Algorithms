@@ -6,3 +6,4 @@
   - [Stack and Queue](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Stack%20and%20Queue)
   - [Tree](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Tree)
   - [Heap](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Heap)
+  - [Hash](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Hash)
