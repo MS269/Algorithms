@@ -7,10 +7,11 @@
   - [Tree](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Tree)
   - [Heap](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Heap)
   - [Hash](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Hash)
+  - [Graph](https://github.com/MS269/Algorithms/tree/main/Data%20Structures/Graph)
 
 - ## References
 
-  - <https://gyoogle.dev/blog>
+  - <https://github.com/gyoogle/tech-interview-for-developer>
   - <https://github.com/JaeYeopHan/Interview_Question_for_Beginner>
   - <https://github.com/WooVictory/Ready-For-Tech-Interview>
   - <https://github.com/TheAlgorithms/C>
